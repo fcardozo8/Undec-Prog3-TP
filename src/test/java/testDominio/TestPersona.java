@@ -1,10 +1,7 @@
 package testDominio;
 
 import dominio.Persona;
-import excepciones.ExceptionApellidoVacio;
-import excepciones.ExceptionCantidadDeCaracteresDNI;
-import excepciones.ExceptionPersona;
-import excepciones.ExceptionPersonaNull;
+import excepciones.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -41,6 +38,12 @@ public class TestPersona {
     @Test
     public void generarObjetoPersona_fallo_cantidadDeCaracteresDNI(){
         assertThrows(ExceptionCantidadDeCaracteresDNI.class,()->{Persona p1= Persona.instancia(1,"Diego","Milito",1632, LocalDate.of(1966,12,02),60,1.80);});
+
+    }
+    @Order(5)
+    @Test
+    public void generarObjetoPersona_fallo_pesoInvalido(){
+        assertThrows(ExceptionPesoInvalido.class,()->{Persona p1= Persona.instancia(1,"Diego","Milito",14122014, LocalDate.of(1966,12,02),-5,1.80);});
 
     }
 }
