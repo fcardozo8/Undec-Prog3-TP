@@ -1,5 +1,6 @@
 package dominio;
 
+import excepciones.ExceptionApellidoVacio;
 import excepciones.ExceptionPersona;
 import excepciones.ExceptionPersonaNull;
 
@@ -17,6 +18,8 @@ public class Persona {
     public static Persona instancia(int id, String nombre, String apellido, int dni, LocalDate fechaDeNacimiento, double peso, double altura) throws ExceptionPersona {
         if(nombre==null)
             throw new ExceptionPersonaNull("nombre null");
+        if (apellido.equals(""))
+            throw new ExceptionApellidoVacio("apellido vacio");
         return new Persona(id,nombre,apellido,dni,fechaDeNacimiento,peso,altura);
     }
 
