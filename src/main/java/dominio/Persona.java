@@ -1,6 +1,7 @@
 package dominio;
 
 import excepciones.ExceptionApellidoVacio;
+import excepciones.ExceptionCantidadDeCaracteresDNI;
 import excepciones.ExceptionPersona;
 import excepciones.ExceptionPersonaNull;
 
@@ -20,6 +21,9 @@ public class Persona {
             throw new ExceptionPersonaNull("nombre null");
         if (apellido.equals(""))
             throw new ExceptionApellidoVacio("apellido vacio");
+        String cadena= String.valueOf(dni);
+        if (cadena.length()<7)
+            throw new ExceptionCantidadDeCaracteresDNI("cantidad de caracteres invalida");
         return new Persona(id,nombre,apellido,dni,fechaDeNacimiento,peso,altura);
     }
 
